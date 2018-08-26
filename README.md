@@ -1,1 +1,1 @@
-# select2_study
+# select2插件的相关学习
