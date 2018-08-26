@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<link rel="stylesheet" type="text/css" href="css/select2.min.css"/>
+		<script src="js/jquery-3.2.1.js"></script>
+		<script src="js/select2.full.min.js"></script>
+		<meta charset="utf-8" />
+		<title>select2学习</title>
+	</head>
+	<body>
+		<div style="width: 600px;margin: auto;margin-top:200px;height: auto;border: dashed red 1px;">
+			<p>这是单选</p>
+			<select id="s1" class="myselect">
+				 <optgroup label="group1">
+				  	<option id="p1">帅哥</option>			
+					<option id="p2" disabled="disabled">美女</option>
+					<optgroup label="group11">
+					  	<option id="p1">帅哥1</option>			
+						<option id="p2" disabled="disabled">美女1</option>
+				 	</optgroup>
+				 </optgroup>
+				 <optgroup label="group2">			
+					<option id="p3">大虫子</option>			
+					<option id="p4">阿西吧</option>	
+				</optgroup>
+			</select>
+		</div>
+		
+		<script>
+			/**
+			 * $(function(){}) 就是$(document).ready(function(){})的简写，只dom结构加载完成值后执行
+			 * 但是这个加载不包括图片或者其他什么的加载
+			 * window.onload=function(){}这个加载是指页面中所有的东西加载完毕才执行
+			 */
+			$(function(){
+				//初始化select2
+				$(".myselect").select2({
+					multiple:true,
+					width:500,
+					disabled:false,
+					maximumSelectionLength:10,
+					data: [
+							{
+						      id: 1,
+						      text: "Option 1"
+						    },
+						    {
+						      id: 2,
+						      text: "Option 2",
+						      //这样就是默认选中
+						      selected: true
+						    },
+						    {
+						      id: 3,
+						      text: "Option 3",
+						      disabled: true,
+						      children:[
+						      	{id: 1,text: "Option 1" },
+						      	{id:2,text:"asdadas",
+						      		children:[
+							      		{id: 111111,text: "Option 1" },
+							      		{id:222222,text:"asdadas",
+							      			children:[
+									      		{id: 111111,text: "Option 1" },
+									      		{id:222222,text:"asdadas"}
+								      		]
+							      		
+							      		}
+						      		]
+						      	
+						      	}
+						      ]
+						    }
+						  ]
+					
+					});
+				});
+			
+		/**
+		 * 知识点：让select支持多选
+		 * 可以在html中的select标签加上属性 multiple="multiple"
+		 * 可以在select初始化函数中配置API
+		 * $("#select2").select2({
+		 * 		multiple:true;
+		 * });
+		 * 常用的配置
+		 * width: 控制select2的宽度 数字，没有单位px,可以是80% 这样
+		 * multiple: 是否多选模式 boolean
+		 * disabled: 是否可用，boolean，true时禁用
+		 * data：对象数组,显示的数据
+		 * allowClear： true时有全部清空的按钮
+		 * maximumSelectionLength:最多选择的数量
+		 * ajax:可以动态加载远程数
+		 * 
+		 */
+		</script>
+	</body>
+</html>
